@@ -43,13 +43,10 @@ if (setsockopt(server_sock, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) == -1) {
 std::cout << "Error setsockopt(): " << strerror(errno) << std::endl;
 return 1;
 }
-
-// Bind server socket to ip:port
 if (bind(server_sock, (const sockaddr*)&sa, sizeof(sa)) == -1) {
 std::cout << "Error bind(): " << strerror(errno) << " on: " << host << ":" << port << std::endl;
 return 1;
 }
-// Make server to listen
 if (listen(server_sock, SERVER_BACKLOG) == -1) {
 std::cout << "Error listen(): " << strerror(errno) << std::endl;
 return 1;
